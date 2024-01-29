@@ -1,0 +1,73 @@
+/* footerComponent.css */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial;
+    color: rgba(0, 0, 0, 0.87);
+    margin: 0;
+    font-size: 14px;
+    font-style: normal;
+    text-align: left;
+    font-family: Arial;
+    font-weight: 400;
+    line-height: 20px;
+    overflow-wrap: anywhere;
+    letter-spacing: 0.02em;
+}
+
+.column {
+    flex: 1;
+    margin-left: 20px;
+    color: black;
+}
+
+.column h4 {
+    font-size: 18px;
+}
+
+.column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.column li {
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+}
+
+.column a {
+    color: black;
+    text-decoration: none;
+}
+.horizontal-div {
+    background-color: black;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px;
+}
+
+.row img {
+    margin: 0 30px;
+}
+
+.u {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+}

@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Update Chatbot Copy Text" icon-name="standard:feedback">
+        <lightning-layout>
+            <lightning-layout-item size="6" padding="around-small">
+                <template if:true={localeOptions}>
+                    <lightning-combobox name="progress" label="Locale" value={selectedLocale}
+                        options={localeOptions} onchange={handleLocaleChange}>
+                    </lightning-combobox>
+                </template>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" padding="around-small">
+                <template if:true={boxOptions}>
+                    <lightning-combobox name="progress" label="Dialogue Box" value={selectedBox}
+                        options={boxOptions} onchange={handleBoxChange} disabled={boxOptionsDisabled}>
+                    </lightning-combobox>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <template lwc:if={recordsExist}>
+            <c-my-custom-type-datatable data={records} columns={columns} key-field="Id"  draft-values={draftValues} onsave={handleSubmit} hide-checkbox-column onrowselection={handleRowSelection}></c-my-custom-type-datatable>
+        </template>
+        <template lwc:else>
+                <div class="slds-notify slds-notify_alert slds-alert_warning" role="alert">
+                    <lightning-icon icon-name="utility:info" alternative-text="Warning!" title="Warning"></lightning-icon>
+                    <h1> Please Select a Locale and a Dialogue Box to Procced.</h1>
+                </div>
+        </template>
+
+    </lightning-card>
+</template>

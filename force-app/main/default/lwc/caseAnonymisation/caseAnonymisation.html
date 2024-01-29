@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Anonymise Case">
+        <div class="slds-var-p-horizontal_small">
+            <lightning-combobox 
+            label="Object Name" 
+            value={objectName}
+            placeholder="Select Object" 
+            options={objectOptions}
+            onchange={handleObjectNameChange}>
+          </lightning-combobox>
+           <!--<lightning-input type="text" label="Case ID" value={caseId} onchange={handleCaseIdChange}></lightning-input>--> 
+        </div>
+
+        <template lwc:if={objectCheck}>
+        <div class="slds-var-p-horizontal_small">
+         
+            <lightning-combobox
+            label="Select DRP Name"
+            value={drpValue}
+            placeholder="Select DRP Name"
+            options={metadataOptions}
+            onchange={handleDrpChange}
+            ></lightning-combobox>
+          
+        </div>
+      </template>
+      
+        
+       <!-- <div class="slds-size_1-of-1 slds-var-p-bottom_x-small slds-var-p-top_x-small slds-border_bottom">
+          <lightning-button label="Anonymise" name="Run First Job" onclick={runFirstJob}></lightning-button>
+        </div> -->
+        
+        <div class="slds-size_1-of-1 slds-var-p-bottom_x-small slds-var-p-top_x-small slds-border_bottom">
+          <h2 class="slds-text-heading_small slds-var-p-bottom_x-small">Schedule Job</h2>
+          <lightning-input class="slds-var-p-bottom_x-small" type="time" name="time" label="When would you like to schedule the sync" required
+             onchange={handleTimeChange}></lightning-input>
+          <lightning-button label="Schedule Job" name="Schedule Job" onclick={scheduleApexJob}></lightning-button>
+        </div>
+        
+          
+    </lightning-card>
+    
+</template>

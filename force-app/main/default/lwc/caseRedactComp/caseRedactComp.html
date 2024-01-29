@@ -1,0 +1,59 @@
+<template>
+    <lightning-card icon-name="custom:custom91"  title="Redact Case Details">
+       <template if:true={loaded}>
+          <template if:true={isCase}>
+             <lightning-accordion active-section-name="A">
+                <lightning-accordion-section name="A" label="Description">
+                   <p class="slds-var-p-horizontal_small">
+                      <lightning-formatted-rich-text value={caseDescription} ></lightning-formatted-rich-text>
+                   </p>
+                   <br>
+                   <div>
+                      <lightning-button label="Redact" onclick={handleCaseRedact}></lightning-button>
+                   </div>
+                </lightning-accordion-section>
+            
+            
+             <template if:true={caseComments}>
+
+                <lightning-accordion-section name="B" label="Comments">
+                   <div style="padding:0.5rem;background:#16325c">
+                      <p class="slds-var-p-horizontal_small slds-text-color_inverse-weak">Please Redact One comment at a time.</p>
+                   </div>
+                   <ul class="slds-var-m-around_medium">
+                      <template for:each={caseComments} for:item="comment">
+                         <li key={comment.Id}>
+                            {comment.CommentBody}
+                            <lightning-button class="slds-float_right" label="Redact" value={comment.Id} onclick={handleCommentRedact}></lightning-button>
+                         </li>
+                         <br key={comment.Id}>
+                      </template>
+                   </ul>
+                   <br>
+                </lightning-accordion-section>
+         
+               </template> 
+            </lightning-accordion>  
+            </template>
+          
+          <template if:true={isLiveChatTranscript}>
+            <lightning-accordion active-section-name="C">
+             <lightning-accordion-section name="C" label="Transcript">
+               <div class="slds-scrollable_y" style="height:20rem" tabindex="0">
+                <p class="slds-var-p-horizontal_small">
+                   <lightning-formatted-rich-text value={chatBody} ></lightning-formatted-rich-text>
+                </p>
+               </div> 
+                <br>
+                <div>
+                   <lightning-button label="Redact" onclick={handleChatRedact}></lightning-button>
+                </div>
+             </lightning-accordion-section>
+            </lightning-accordion>                
+          </template>
+       </template>
+       <template if:false={loaded}>
+          <lightning-spinner alternative-text="Loading"></lightning-spinner>
+       </template> 
+    </lightning-card>
+ </template>
